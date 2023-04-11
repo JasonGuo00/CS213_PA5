@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/coffee"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="32dp"
+            android:onClick="transition_coffee"
+            android:text="Coffee"
+            app:layout_constraintBottom_toTopOf="@+id/basket"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/basket"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="32dp"
+            android:onClick="transition_basket"
+            android:text="Order Basket"
+            app:layout_constraintBottom_toTopOf="@+id/list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/list"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="36dp"
+            android:onClick="transition_shoplist"
+            android:text="Shop List"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/donut"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="32dp"
+            android:onClick="transition_donut"
+            android:text="Donut"
+            app:layout_constraintBottom_toTopOf="@+id/coffee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
