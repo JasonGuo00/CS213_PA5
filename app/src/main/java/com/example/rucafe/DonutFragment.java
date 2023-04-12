@@ -26,6 +26,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import cafeapp.Donut;
+import cafeapp.Order;
 import cafeapp.RecyclerClickListener;
 import cafeapp.RecyclerDonut;
 
@@ -48,7 +49,7 @@ public class DonutFragment extends Fragment implements RecyclerClickListener {
     private ArrayList<RecyclerDonut> recycler_list;
     private ArrayList<Donut> selected_donuts;
     private Spinner quantity;
-    private Button add_donut;
+    private Button add_donut, order_button;
     private ListView listView;
     private TextView total;
     private int selected_position;
@@ -97,6 +98,8 @@ public class DonutFragment extends Fragment implements RecyclerClickListener {
         ArrayAdapter<Donut> select_donuts_adapter = createListView(view);
         // Add Donut
         createAddButton(view, select_donuts_adapter);
+        // Make Order
+        createOrderButton(view, select_donuts_adapter);
         // Set initial price text box
         total = view.findViewById(R.id.donut_tprice);
         updatePrice();
@@ -138,6 +141,15 @@ public class DonutFragment extends Fragment implements RecyclerClickListener {
             @Override
             public void onClick(View view) {
                 choose_donut(adapter);
+            }
+        });
+    }
+    private void createOrderButton(View view, ArrayAdapter<Donut> adapter){
+        order_button = view.findViewById(R.id.donut_order_button);
+        order_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addToOrder(adapter);
             }
         });
     }
@@ -216,5 +228,27 @@ public class DonutFragment extends Fragment implements RecyclerClickListener {
     public void DonutClick(int position) {
         selected_position = position;
         Toast.makeText(getContext(), recycler_list.get(position).toString() + " selected!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void addToOrder(ArrayAdapter<Donut> adapter) {
+        if(selected_donuts.isEmpty()) {
+            Toast.makeText(getContext(), "Please select some donuts before adding to order!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        for(Donut donut : selected_donuts) {
+            if(Order.getGlobal().contains(donut)) {
+                Donut existing_donut = (Donut) Order.getGlobal().get(Order.getGlobal().indexOf(donut));
+                existing_donut.addDonuts(donut.getQuantity());
+            }
+            else {
+                Order.addItem(donut);
+                System.out.println("This was ran");
+            }
+        }
+        System.out.println(Order.getGlobal().toString());
+        Toast.makeText(getContext(), "Donuts added to your order!", Toast.LENGTH_SHORT).show();
+        selected_donuts.clear();
+        adapter.notifyDataSetChanged();
+        updatePrice();
     }
 }
