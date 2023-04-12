@@ -25,4 +25,7 @@
     <string name="add_donut">Add Donut</string>
     <string name="home_header">RU Cafe</string>
     <string name="add_order">Add to Order</string>
+    <string name="subtotal">Subtotal:</string>
+    <string name="tax">Tax:</string>
+    <string name="total">Total:</string>
 </resources>

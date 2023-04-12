@@ -39,7 +39,7 @@ public class OrderFragment extends Fragment {
     private String mParam2;
     private ArrayList<MenuItem> olist;
     private ListView order_listview;
-    private TextView order_header;
+    private TextView order_header, subtotal, tax, total;
 
     public OrderFragment() {
         // Required empty public constructor
@@ -77,11 +77,16 @@ public class OrderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_order, container, false);
-        // Header
+        // Header and other text fields
         order_header = view.findViewById(R.id.order_header);
         order_header.setText("Order #" + Order.getPosition());
+        subtotal = view.findViewById(R.id.subtotal);
+        tax = view.findViewById(R.id.tax);
+        total = view.findViewById(R.id.total);
         // Create a listview, populate with Order.getGlobal() list
         ArrayAdapter<MenuItem> adapter = createListView(view);
+        // Set the price text fields
+        updatePrice();
 
         return view;
     }
@@ -100,6 +105,15 @@ public class OrderFragment extends Fragment {
         return list_adapter;
     }
 
+    private void updatePrice() {
+        String new_text1 = String.format("$%,.2f",Order.staticSubtotal());
+        String new_text2 = String.format("$%,.2f",Order.staticTax());
+        String new_text3 = String.format("$%,.2f",Order.staticTotalPrice());
+        subtotal.setText(new_text1);
+        tax.setText(new_text2);
+        total.setText(new_text3);
+    }
+
     void remove_item(ArrayAdapter<MenuItem> adapter, int position) {
         MenuItem removing = olist.get(position);
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
@@ -110,7 +124,7 @@ public class OrderFragment extends Fragment {
                 Order.removeItem(removing);
                 olist.remove(removing);
                 adapter.notifyDataSetChanged();
-//                updatePrice();
+                updatePrice();
                 Toast.makeText(getContext(), removing.toString() + " removed!", Toast.LENGTH_SHORT).show();
             }
             //handle the "NO" click
