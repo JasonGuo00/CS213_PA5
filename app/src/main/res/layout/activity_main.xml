@@ -15,49 +15,147 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
-            android:id="@+id/coffee"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="32dp"
-            android:onClick="transition_coffee"
-            android:text="@string/home_coffee"
-            app:layout_constraintBottom_toTopOf="@+id/basket"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/basket"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="32dp"
-            android:onClick="transition_basket"
-            android:text="@string/home_basket"
-            app:layout_constraintBottom_toTopOf="@+id/list"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/list"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="36dp"
-            android:onClick="transition_shoplist"
-            android:text="@string/home_shoplist"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="150dp"
+            android:layout_height="175dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.573"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout3"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintVertical_bias="0.315">
 
-        <Button
-            android:id="@+id/donut"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="32dp"
-            android:onClick="transition_donut"
-            android:text="@string/home_donut"
-            app:layout_constraintBottom_toTopOf="@+id/coffee"
+            <ImageView
+                android:id="@+id/list"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:onClick="transition_shoplist"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/home_shoplist" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="150dp"
+                android:layout_height="25dp"
+                android:background="#9BDCE4"
+                android:onClick="transition_shoplist"
+                android:text="@string/home_shoplist"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/list" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="150dp"
+            android:layout_height="175dp"
+            android:layout_marginStart="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintVertical_bias="0.315">
+
+            <ImageView
+                android:id="@+id/basket"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:onClick="transition_basket"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/home_order" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="150dp"
+                android:layout_height="25dp"
+                android:background="#DBE19F"
+                android:onClick="transition_basket"
+                android:text="@string/home_basket"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/basket" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="150dp"
+            android:layout_height="175dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+            <ImageView
+                android:id="@+id/coffee"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:onClick="transition_coffee"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/home_coffee" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="150dp"
+                android:layout_height="25dp"
+                android:background="#A19088"
+                android:onClick="transition_coffee"
+                android:text="@string/home_coffee"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/coffee" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="150dp"
+            android:layout_height="175dp"
+            android:layout_marginTop="100dp"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+            app:layout_constraintHorizontal_bias="0.455"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+            <ImageView
+                android:id="@+id/donut"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:onClick="transition_donut"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/home_donuts" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="150dp"
+                android:layout_height="25dp"
+                android:background="#EFA6A6"
+                android:onClick="transition_donut"
+                android:text="@string/home_donut"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/donut" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="344dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="28dp"
+            android:background="#DC0E0E"
+            android:text="@string/home_header"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="60sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -6,7 +6,6 @@
     <string name="home_coffee">Coffee</string>
     <string name="home_basket">Basket</string>
     <string name="home_shoplist">Shop List</string>
-    <string name="donut_title">Donut</string>
     <string name="coffee_title">Coffee</string>
     <string name="coffee_sizes_title">Sizes:</string>
     <string name="coffee_sizes_small">Small</string>
@@ -22,4 +21,7 @@
     <string name="coffee_add_ins_mocha">Mocha</string>
     <string name="coffee_total">Total:</string>
     <string name="coffee_add_to_order">Add to Order</string>
+    <string name="donut_header">Choose Your Donuts!</string>
+    <string name="add_donut">Add Donut</string>
+    <string name="home_header">RU Cafe</string>
 </resources>
