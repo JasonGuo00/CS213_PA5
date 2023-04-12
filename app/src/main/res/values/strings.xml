@@ -6,4 +6,6 @@
     <string name="home_coffee">Coffee</string>
     <string name="home_basket">Basket</string>
     <string name="home_shoplist">Shop List</string>
+    <string name="donut_header">Choose Your Donuts!</string>
+    <string name="add_donut">Add Donut</string>
 </resources>
