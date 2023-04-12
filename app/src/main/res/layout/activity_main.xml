@@ -21,7 +21,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="32dp"
             android:onClick="transition_coffee"
-            android:text="Coffee"
+            android:text="@string/home_coffee"
             app:layout_constraintBottom_toTopOf="@+id/basket"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -32,7 +32,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="32dp"
             android:onClick="transition_basket"
-            android:text="Order Basket"
+            android:text="@string/home_basket"
             app:layout_constraintBottom_toTopOf="@+id/list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -43,7 +43,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="36dp"
             android:onClick="transition_shoplist"
-            android:text="Shop List"
+            android:text="@string/home_shoplist"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -54,7 +54,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="32dp"
             android:onClick="transition_donut"
-            android:text="Donut"
+            android:text="@string/home_donut"
             app:layout_constraintBottom_toTopOf="@+id/coffee"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

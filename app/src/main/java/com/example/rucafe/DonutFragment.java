@@ -27,8 +27,6 @@ public class DonutFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private Spinner donut_type;
-
     public DonutFragment() {
         // Required empty public constructor
     }
@@ -65,9 +63,6 @@ public class DonutFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_donut, container, false);
 
-        donut_type = view.findViewById(R.id.spinner);
-        ArrayAdapter<String> dtype_options = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, new String[] {"Yeast Donut", "Cake Donut", "Donut Hole"});
-        donut_type.setAdapter(dtype_options);
         return view;
     }
 }
