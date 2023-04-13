@@ -10,20 +10,20 @@ public class ShopList {
     /**
      * The list containing all orders for the cafe.
      */
-    private ArrayList<Order> orderList;
+    private static ArrayList<Order> orderList = new ArrayList<>();
 
     /**
      * Constructor to initialize the orderList.
      */
     public ShopList() {
-        orderList = new ArrayList<>();
+
     }
 
     /**
      * Add an order to the list.
      * @param order Order to be added.
      */
-    public void addOrder(Order order) {
+    public static void addOrder(Order order) {
         orderList.add(order);
     }
 
@@ -31,7 +31,7 @@ public class ShopList {
      * Remove an order to the list.
      * @param order Order to be removed.
      */
-    public void removeOrder(Order order) {
+    public static void removeOrder(Order order) {
         orderList.remove(order);
     }
 

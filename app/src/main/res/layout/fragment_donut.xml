@@ -10,86 +10,100 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout9"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#3C8C8C"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="335dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="20dp"
+                android:text="@string/donut_header"
+                android:textAlignment="textStart"
+                android:textColor="#DCDCDC"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
-            android:layout_width="356dp"
-            android:layout_height="157dp"
-            android:layout_marginTop="60dp"
-            android:background="#E8F19B"
+            android:layout_width="370dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="20dp"
+            android:background="#B0D6CE"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="300dp"
-            android:layout_height="31dp"
-            android:layout_marginBottom="14dp"
-            android:text="@string/donut_header"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/recycler"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout9" />
 
         <Spinner
             android:id="@+id/quantity"
-            android:layout_width="157dp"
-            android:layout_height="57dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="12dp"
-            android:background="#EDD99B"
+            android:layout_width="175dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#89B3AA"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recycler" />
 
         <Button
             android:id="@+id/add_donut"
-            android:layout_width="166dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="175dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             android:text="@string/add_donut"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.035"
-            app:layout_constraintStart_toEndOf="@+id/quantity"
             app:layout_constraintTop_toBottomOf="@+id/recycler" />
 
         <ListView
             android:id="@+id/donut_listview"
-            android:layout_width="358dp"
+            android:layout_width="370dp"
             android:layout_height="115dp"
-            android:background="#A4E8F1"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="20dp"
+            android:background="#89B3AA"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_donut"
-            app:layout_constraintVertical_bias="0.069" />
+            app:layout_constraintTop_toBottomOf="@+id/add_donut" />
 
         <TextView
-            android:id="@+id/donut_tprice"
-            android:layout_width="240dp"
+            android:id="@+id/donut_price"
+            android:layout_width="370dp"
             android:layout_height="38dp"
-            android:layout_marginTop="24dp"
-            android:background="#F3AFC6"
+            android:layout_marginTop="20dp"
+            android:background="#89B3AA"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/donut_listview"
-            app:layout_constraintVertical_bias="0.048" />
+            app:layout_constraintTop_toBottomOf="@+id/donut_listview" />
 
         <Button
             android:id="@+id/donut_order_button"
-            android:layout_width="241dp"
-            android:layout_height="60dp"
+            android:layout_width="370dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
             android:text="@string/add_order"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/donut_tprice" />
+            app:layout_constraintTop_toBottomOf="@+id/donut_price" />
+
+        <TextView
+            android:id="@+id/donut_tprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/donut_price"
+            app:layout_constraintStart_toStartOf="@+id/donut_price"
+            app:layout_constraintTop_toTopOf="@+id/donut_price" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

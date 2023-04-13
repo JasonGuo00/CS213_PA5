@@ -11,15 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import cafeapp.Donut;
 import cafeapp.MenuItem;
 import cafeapp.Order;
+import cafeapp.ShopList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,6 +41,8 @@ public class OrderFragment extends Fragment {
     private ArrayList<MenuItem> olist;
     private ListView order_listview;
     private TextView order_header, subtotal, tax, total;
+    private Button add_order;
+    private ArrayAdapter<MenuItem> list_adapter;
 
     public OrderFragment() {
         // Required empty public constructor
@@ -88,13 +91,15 @@ public class OrderFragment extends Fragment {
         // Set the price text fields
         updatePrice();
 
+        createAddButton(view);
+
         return view;
     }
 
     private ArrayAdapter<MenuItem> createListView(View view) {
         olist = Order.getGlobal();
         order_listview = view.findViewById(R.id.order_listview);
-        ArrayAdapter<MenuItem> list_adapter = new ArrayAdapter<MenuItem>(getContext(), android.R.layout.simple_list_item_1, olist);
+        list_adapter = new ArrayAdapter<MenuItem>(getContext(), android.R.layout.simple_list_item_1, olist);
         order_listview.setAdapter(list_adapter);
         order_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -136,5 +141,28 @@ public class OrderFragment extends Fragment {
         });
         AlertDialog dialog = alert.create();
         dialog.show();
+    }
+
+    private void createAddButton(View view) {
+        add_order = view.findViewById(R.id.add_order);
+
+        add_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!Order.getGlobal().isEmpty()) {
+                    Toast.makeText(getContext(), "Order #" + Order.getPosition() + " added!", Toast.LENGTH_SHORT).show();
+                    Order order = new Order();
+                    order.finalizeOrder();
+                    ShopList.addOrder(order);
+                    Order.getGlobal().clear();
+                    olist.clear();
+                    list_adapter.notifyDataSetChanged();
+                    updatePrice();
+                } else {
+                    Toast.makeText(getContext(), "Order Empty!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
     }
 }
