@@ -24,7 +24,8 @@ import cafeapp.Order;
 import cafeapp.ShopList;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment that acts as the screen for reviewing the Order
+ * @author Jason Guo, Russel Rivera
  */
 public class OrderFragment extends Fragment {
     private ArrayList<MenuItem> olist;
@@ -33,15 +34,35 @@ public class OrderFragment extends Fragment {
     private TextView total;
     private ArrayAdapter<MenuItem> list_adapter;
 
+    /**
+     * Required empty public constructor
+     */
     public OrderFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * onCreate() method of the fragment
+     * @param savedInstanceState If the fragment is being re-created from
+     * a previous saved state, this is the state.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * onCreateView() method of the fragment
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return Main view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -63,6 +84,11 @@ public class OrderFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Creates and displays the ListView that holds the order
+     * @param view Main view
+     * @return ListView adapter
+     */
     private ArrayAdapter<MenuItem> createListView(View view) {
         olist = Order.getGlobal();
         ListView order_listview = view.findViewById(R.id.order_listview);
@@ -77,6 +103,9 @@ public class OrderFragment extends Fragment {
         return list_adapter;
     }
 
+    /**
+     * Updates the prices: subtotal, tax, total, of the MenuItems in the order.
+     */
     private void updatePrice() {
         String new_text1 = String.format(Locale.US, "$%,.2f",Order.staticSubtotal());
         String new_text2 = String.format(Locale.US, "$%,.2f",Order.staticTax());
@@ -86,6 +115,11 @@ public class OrderFragment extends Fragment {
         total.setText(new_text3);
     }
 
+    /**
+     * On clicking an item in the ListView, allow the user the option to remove the selected MenuItem.
+     * @param adapter ListView adapter
+     * @param position Position of the selected item in the list
+     */
     void remove_item(ArrayAdapter<MenuItem> adapter, int position) {
         MenuItem removing = olist.get(position);
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
@@ -110,6 +144,10 @@ public class OrderFragment extends Fragment {
         dialog.show();
     }
 
+    /**
+     * Creates and displays the button to add orders to the Shop List
+     * @param view Main view
+     */
     private void createAddButton(View view) {
         Button add_order = view.findViewById(R.id.add_order);
 
