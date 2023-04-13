@@ -35,7 +35,7 @@ public class Coffee extends MenuItem {
      * @param coffee Coffee to copy from
      */
     public Coffee(Coffee coffee) {
-        addInList = coffee.addInList;
+        addInList = (ArrayList<String>) (coffee.addInList).clone();
         this.size = coffee.getSize();
         coffeeQuantity = coffee.getQuantity();
     }

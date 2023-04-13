@@ -10,11 +10,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+/**
+ * Main Activity Controller of the app
+ * @author Jason Guo, Russel Rivera
+ */
 public class MainActivity extends AppCompatActivity {
     private ImageView donut, coffee, basket, list;
     // Fragment Manager
     private FragmentManager fragmentManager;
 
+    /**
+     * onCreate() method of the main activity.
+     * @param savedInstanceState If the screen is being re-created from
+     *      * a previous saved state, this is the state.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
     }
 
+    /**
+     * Transition method to show the DonutFragment
+     * @param view Main view
+     */
     public void transition_donut(View view) {
         findViewById(R.id.home).setVisibility(View.INVISIBLE);
         DonutFragment donut_frag = (DonutFragment)fragmentManager.findFragmentByTag("DonutFragment");
@@ -40,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Transition method to show the CoffeeFragment
+     * @param view Main view
+     */
     public void transition_coffee(View view) {
         findViewById(R.id.home).setVisibility(View.INVISIBLE);
         CoffeeFragment coffee_frag = (CoffeeFragment) fragmentManager.findFragmentByTag("CoffeeFragment");
@@ -52,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Transition method to show the OrderFragment
+     * @param view Main view
+     */
     public void transition_basket(View view) {
         findViewById(R.id.home).setVisibility(View.INVISIBLE);
         OrderFragment order_frag = (OrderFragment) fragmentManager.findFragmentByTag("OrderFragment");
@@ -64,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Transition method to show the ShoplistFragment
+     * @param view Main view
+     */
     public void transition_shoplist(View view) {
         findViewById(R.id.home).setVisibility(View.INVISIBLE);
         ShoplistFragment shoplist_frag = (ShoplistFragment) fragmentManager.findFragmentByTag("ShoplistFragment");
@@ -76,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Handles transitioning back to the main activity page when clicking the back button
+     */
     @Override
     public void onBackPressed() {
         findViewById(R.id.home).setVisibility(View.VISIBLE);
