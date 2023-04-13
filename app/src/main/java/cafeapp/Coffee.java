@@ -31,6 +31,16 @@ public class Coffee extends MenuItem {
     }
 
     /**
+     * Constructor for a coffee object, taking a size and initializing an empty add-in list
+     * @param coffee Coffee to copy from
+     */
+    public Coffee(Coffee coffee) {
+        addInList = coffee.addInList;
+        this.size = coffee.getSize();
+        coffeeQuantity = coffee.getQuantity();
+    }
+
+    /**
      * Setter method to change the size of the Coffee
      * @param size Size of the coffee to change to
      */

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import cafeapp.MenuItem;
 import cafeapp.Order;
@@ -24,65 +25,31 @@ import cafeapp.ShopList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link OrderFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class OrderFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private ArrayList<MenuItem> olist;
-    private ListView order_listview;
-    private TextView order_header, subtotal, tax, total;
-    private Button add_order;
+    private TextView subtotal;
+    private TextView tax;
+    private TextView total;
     private ArrayAdapter<MenuItem> list_adapter;
 
     public OrderFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment OrderFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static OrderFragment newInstance(String param1, String param2) {
-        OrderFragment fragment = new OrderFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_order, container, false);
         // Header and other text fields
-        order_header = view.findViewById(R.id.order_header);
-        order_header.setText("Order #" + Order.getPosition());
+        TextView order_header = view.findViewById(R.id.order_header);
+        String order_title = "Order #" + Order.getPosition();
+        order_header.setText(order_title);
         subtotal = view.findViewById(R.id.subtotal);
         tax = view.findViewById(R.id.tax);
         total = view.findViewById(R.id.total);
@@ -98,7 +65,7 @@ public class OrderFragment extends Fragment {
 
     private ArrayAdapter<MenuItem> createListView(View view) {
         olist = Order.getGlobal();
-        order_listview = view.findViewById(R.id.order_listview);
+        ListView order_listview = view.findViewById(R.id.order_listview);
         list_adapter = new ArrayAdapter<MenuItem>(getContext(), android.R.layout.simple_list_item_1, olist);
         order_listview.setAdapter(list_adapter);
         order_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -111,9 +78,9 @@ public class OrderFragment extends Fragment {
     }
 
     private void updatePrice() {
-        String new_text1 = String.format("$%,.2f",Order.staticSubtotal());
-        String new_text2 = String.format("$%,.2f",Order.staticTax());
-        String new_text3 = String.format("$%,.2f",Order.staticTotalPrice());
+        String new_text1 = String.format(Locale.US, "$%,.2f",Order.staticSubtotal());
+        String new_text2 = String.format(Locale.US, "$%,.2f",Order.staticTax());
+        String new_text3 = String.format(Locale.US, "$%,.2f",Order.staticTotalPrice());
         subtotal.setText(new_text1);
         tax.setText(new_text2);
         total.setText(new_text3);
@@ -136,7 +103,7 @@ public class OrderFragment extends Fragment {
         }).setNegativeButton("no", new DialogInterface.OnClickListener() {
             // Do nothing
             public void onClick(DialogInterface dialog, int which) {
-                return;
+
             }
         });
         AlertDialog dialog = alert.create();
@@ -144,7 +111,7 @@ public class OrderFragment extends Fragment {
     }
 
     private void createAddButton(View view) {
-        add_order = view.findViewById(R.id.add_order);
+        Button add_order = view.findViewById(R.id.add_order);
 
         add_order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,7 +128,6 @@ public class OrderFragment extends Fragment {
                 } else {
                     Toast.makeText(getContext(), "Order Empty!", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
     }

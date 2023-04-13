@@ -1,6 +1,7 @@
 package cafeapp;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Class representing the order of a customer.
@@ -138,7 +139,7 @@ public class Order {
             total += menuItem.itemPrice() * menuItem.getQuantity() * (1 + Constants.SALES_TAX_MULTIPLIER);
         }
 
-        ret.append(String.format("Order Total: $%,.2f", total));
+        ret.append(String.format(Locale.US, "Order Total: $%,.2f", total));
 
         return ret.toString();
     }
