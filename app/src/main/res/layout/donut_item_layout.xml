@@ -20,7 +20,6 @@
         android:layout_marginLeft="11dp"
         android:layout_marginTop="28dp"
         android:layout_toRightOf="@id/imageView"
-        android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#000000"
         android:textSize="20sp"

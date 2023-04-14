@@ -103,8 +103,8 @@ public class Donut extends MenuItem {
      */
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof Donut x) {
-            return (this.getDonutType().equals(x.getDonutType()) && this.getDonutFlavor().equals(x.getDonutFlavor()));
+        if(obj instanceof Donut) {
+            return (this.getDonutType().equals(((Donut)obj).getDonutType()) && this.getDonutFlavor().equals(((Donut)obj).getDonutFlavor()));
         }
         return false;
     }

@@ -21,7 +21,8 @@ import cafeapp.Order;
 import cafeapp.ShopList;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment that acts as the screen for reviewing all orders
+ * @author Jason Guo, Russel Rivera
  */
 public class ShoplistFragment extends Fragment {
     private ArrayList<Order> olist;

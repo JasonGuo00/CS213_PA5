@@ -142,8 +142,8 @@ public class Coffee extends MenuItem {
      */
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof Coffee x) {
-            return (this.getSize().equals(x.getSize()) && this.getToppings().equals(x.getToppings()));
+        if(obj instanceof Coffee) {
+            return (this.getSize().equals(((Coffee)obj).getSize()) && this.getToppings().equals(((Coffee)obj).getToppings()));
         }
         return false;
     }
