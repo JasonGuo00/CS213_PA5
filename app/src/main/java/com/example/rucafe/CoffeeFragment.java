@@ -25,21 +25,44 @@ import cafeapp.Constants;
 import cafeapp.Order;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment that acts as the screen for ordering Coffee.
+ * @author Jason Guo, Russel Rivera
  */
 public class CoffeeFragment extends Fragment {
     private TextView text_view;
     private Coffee coffee = new Coffee("Short");
 
+
+    /**
+     * Required public constructor
+     */
     public CoffeeFragment() {
         // Required empty public constructor
     }
 
+
+    /**
+     * onCreate() method for fragments
+     * @param savedInstanceState If the fragment is being re-created from
+     * a previous saved state, this is the state.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * onCreateView() method for fragments - Creation of other Views are in here as well
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return the main view is returned
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -62,10 +85,20 @@ public class CoffeeFragment extends Fragment {
         return view;
     }
 
+
+    /**
+     * Creates and displays a TextView for the total
+     * @param view Main view
+     */
     private void createTotalLabel(View view) {
         text_view = view.findViewById(R.id.coffee_total);
     }
 
+
+    /**
+     * Creates and displays a Button to add coffee
+     * @param view Main view
+     */
     private void createAddButton(View view) {
         Button add_coffee = view.findViewById(R.id.add_coffee);
 
@@ -79,6 +112,11 @@ public class CoffeeFragment extends Fragment {
         });
     }
 
+
+    /**
+     * Creates and displays a Spinner for quantity
+     * @param view Main view
+     */
     private void createSpinner(View view) {
         Spinner quantity = view.findViewById(R.id.coffee_quantity);
         ArrayAdapter<Integer> spinner_adapter = new ArrayAdapter<Integer>(getContext(), android.R.layout.simple_spinner_item, new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12});
@@ -100,6 +138,10 @@ public class CoffeeFragment extends Fragment {
         });
     }
 
+    /**
+     * Creates and displays a RadioButton for small size
+     * @param view Main view
+     */
     private void createRadioButtonSmall(View view) {
         RadioButton radioButtonSmall = view.findViewById(R.id.radio_button_small);
         radioButtonSmall.setChecked(true);
@@ -115,6 +157,10 @@ public class CoffeeFragment extends Fragment {
         });
     }
 
+    /**
+     * Creates and displays a RadioButton for tall size
+     * @param view Main view
+     */
     private void createRadioButtonTall(View view) {
         RadioButton radioButtonTall = view.findViewById(R.id.radio_button_tall);
 
@@ -129,6 +175,10 @@ public class CoffeeFragment extends Fragment {
         });
     }
 
+    /**
+     * Creates and displays a RadioButton for grande size
+     * @param view Main view
+     */
     private void createRadioButtonGrande(View view) {
         RadioButton radioButtonGrande = view.findViewById(R.id.radio_button_grande);
 
@@ -143,6 +193,10 @@ public class CoffeeFragment extends Fragment {
         });
     }
 
+    /**
+     * Creates and displays a RadioButton for venti size
+     * @param view Main view
+     */
     private void createRadioButtonVenti(View view) {
         RadioButton radioButtonVenti = view.findViewById(R.id.radio_button_venti);
 
@@ -157,6 +211,10 @@ public class CoffeeFragment extends Fragment {
         });
     }
 
+    /**
+     * Creates and displays a CheckBox for sweet cream topping
+     * @param view Main view
+     */
     private void createCheckBoxSweetCream(View view) {
         CheckBox check_box_sweet_cream = view.findViewById(R.id.check_box_sweet_cream);
 
@@ -173,6 +231,10 @@ public class CoffeeFragment extends Fragment {
         });
     }
 
+    /**
+     * Creates and displays a CheckBox for french vanilla topping
+     * @param view Main view
+     */
     private void createCheckBoxFrenchVanilla(View view) {
         CheckBox check_box_french_vanilla = view.findViewById(R.id.check_box_french_vanilla);
 
@@ -189,6 +251,10 @@ public class CoffeeFragment extends Fragment {
         });
     }
 
+    /**
+     * Creates and displays a CheckBox for irish cream topping
+     * @param view Main view
+     */
     private void createCheckBoxIrishCream(View view) {
         CheckBox check_box_irish_cream = view.findViewById(R.id.check_box_irish_cream);
 
@@ -205,6 +271,10 @@ public class CoffeeFragment extends Fragment {
         });
     }
 
+    /**
+     * Creates and displays a CheckBox for caramel topping
+     * @param view Main view
+     */
     private void createCheckBoxCaramel(View view) {
         CheckBox check_box_caramel = view.findViewById(R.id.check_box_caramel);
 
@@ -221,6 +291,10 @@ public class CoffeeFragment extends Fragment {
         });
     }
 
+    /**
+     * Creates and displays a CheckBox for mocha topping
+     * @param view Main view
+     */
     private void createCheckBoxMocha(View view) {
         CheckBox check_box_mocha = view.findViewById(R.id.check_box_mocha);
 
@@ -237,6 +311,9 @@ public class CoffeeFragment extends Fragment {
         });
     }
 
+    /**
+     * Updates the price shown on screen
+     */
     private void updatePrice() {
         double price = coffee.itemPrice()*coffee.getQuantity();
         DecimalFormat f = new DecimalFormat("##.00");

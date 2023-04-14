@@ -27,15 +27,37 @@ public class ShoplistFragment extends Fragment {
     private ArrayList<Order> olist;
     private ArrayAdapter<Order> list_adapter;
 
+
+    /**
+     * Required public constructor
+     */
     public ShoplistFragment() {
         // Required empty public constructor
     }
 
+
+    /**
+     * onCreate() method for fragments
+     * @param savedInstanceState If the fragment is being re-created from
+     * a previous saved state, this is the state.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * onCreateView() method for fragments - Creation of other Views are in here as well
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return the main view is returned
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -46,6 +68,10 @@ public class ShoplistFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Creates and displays a ListView for orders
+     * @param view Main view
+     */
     private ArrayAdapter<Order> createListView(View view) {
         olist = ShopList.getGlobal();
         ListView shop_list_listview = view.findViewById(R.id.shoplist_listview);
@@ -60,6 +86,11 @@ public class ShoplistFragment extends Fragment {
         return list_adapter;
     }
 
+    /**
+     * Creates and displays a ListView for orders
+     * @param adapter ArrayAdapter<Order> for list view
+     * @param position int position of item to remove
+     */
     void remove_item(ArrayAdapter<Order> adapter, int position) {
         Order removing = olist.get(position);
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());

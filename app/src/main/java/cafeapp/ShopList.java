@@ -39,10 +39,6 @@ public class ShopList {
      * Returns the list of all orders made.
      * @return list of orders
      */
-    public static ArrayList<Order> getOrderList() {
-        return orderList;
-    }
-
     public static ArrayList<Order> getGlobal() {
         return new ArrayList<>(orderList);
     }
