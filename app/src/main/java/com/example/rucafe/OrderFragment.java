@@ -33,6 +33,7 @@ public class OrderFragment extends Fragment {
     private TextView tax;
     private TextView total;
     private ArrayAdapter<MenuItem> list_adapter;
+    private TextView order_header;
 
     /**
      * Required empty public constructor
@@ -68,7 +69,7 @@ public class OrderFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_order, container, false);
         // Header and other text fields
-        TextView order_header = view.findViewById(R.id.order_header);
+        order_header = view.findViewById(R.id.order_header);
         String order_title = "Order #" + Order.getPosition();
         order_header.setText(order_title);
         subtotal = view.findViewById(R.id.subtotal);
@@ -163,6 +164,7 @@ public class OrderFragment extends Fragment {
                     olist.clear();
                     list_adapter.notifyDataSetChanged();
                     updatePrice();
+                    order_header.setText("Order #" + Order.getPosition());
                 } else {
                     Toast.makeText(getContext(), "Order Empty!", Toast.LENGTH_SHORT).show();
                 }
